@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+
+COMMON: &common
+  VERSION: '0.0.1'
+
+  DEBUG: false
+  TESTING: false
+
+  MONGO_URL: 'mongodb://localhost:27017/'
+  MONGO_CONNECT_EAGERLY: true
+
+  LOG_BASE_DIR: 'logs'
+  JINJA2_CACHE_SIZE: 50
+
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: true
+
+  MONGO_DB: 'hipflask_dev'
+
+  # don't cache compiled templates: means we can edit on the fly during development
+  JINJA2_CACHE_SIZE: 0
+
+TEST: &test
+  <<: *common
+
+  MONGO_DB: 'hipflask_test'
+
+  # note: setting TESTING to true will *disable* email sending
+  TESTING: true
+
+PRODUCTION: &production
+  <<: *common
+
+  MONGO_DB: 'hipflask'
+
+  JSONIFY_PRETTYPRINT_REGULAR: false

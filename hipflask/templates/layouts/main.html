@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block page_title %}Hipflask{% endblock %}</title>
+  {% assets "css_all" -%}
+  <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+</head>
+<body data-ng-app="Hipflask">
+
+<div class="container">
+  {% block body %}{% endblock %}
+</div>
+
+{% assets "js_all" -%}
+<script src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+</body>
+</html>
+
+<body>
